@@ -7,8 +7,9 @@ from typing import Generator
 from sqlalchemy.orm import Session
 
 # Database
-from backend.db.config import get_db, init_db
-from backend.db.models import Base, User, Portfolio, CV, CoverLetter, APICall
+from .database.deps import get_db
+from .database.init_db import init_db
+from .database.models import Base, User, Portfolio, CV, CoverLetter, APICall
 import uuid
 
 # Initialize database
@@ -23,7 +24,7 @@ import base64
 import time
 from pathlib import Path
 from typing import List, Optional, Dict, Any, Literal
-from backend.services.portfolio_builder import PortfolioBuilder
+from .services.portfolio_builder import PortfolioBuilder
 
 from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, BackgroundTasks, Request, Form, APIRouter, status
 from pydantic import ValidationError, BaseModel, Field
@@ -39,18 +40,18 @@ from typing import Optional, List, Dict, Any, Literal
 from sqlalchemy.orm import Session
 
 # Import database models and session
-from backend.db.models import CV, User, Portfolio, APICall, CoverLetter, ResumeOptimization
+from .db.models import CV, User, Portfolio, APICall, CoverLetter, ResumeOptimization
 
 # All routes are defined directly in this file
 
 # Import and initialize services with proper dependency injection
 def init_services():
     # Import services
-    from backend.services.groq_client import GroqClient
-    from backend.services.portfolio_builder import PortfolioBuilder
-    from backend.services.optimizer import ResumeOptimizer
-    from backend.services.cv_generator import CVGenerator
-    from backend.services.cover_letter_generator import CoverLetterGenerator
+    from .services.groq_client import GroqClient
+    from .services.portfolio_builder import PortfolioBuilder
+    from .services.optimizer import ResumeOptimizer
+    from .services.cv_generator import CVGenerator
+    from .services.cover_letter_generator import CoverLetterGenerator
     
     # Initialize Groq client first
     groq_client = GroqClient()
@@ -81,7 +82,7 @@ cover_letter_generator = services['cover_letter_generator']
 resume_optimizer = services['resume_optimizer']
 
 # Import utilities after services are initialized
-from backend.utils.file_utils import get_temp_file, is_file_supported, cleanup_file as utils_cleanup_file
+from .utils.file_utils import get_temp_file, is_file_supported, cleanup_file as utils_cleanup_file
 
 # Import modules after services are initialized
 def update_module_variables():
@@ -93,11 +94,11 @@ def update_module_variables():
     }
     
     try:
-        from backend.services import portfolio_builder as portfolio_module
-        from backend.services import optimizer as optimizer_module
-        from backend.services import cv_generator as cv_module
-        from backend.services import cover_letter_generator as cl_module
-        from backend.services.groq_client import GroqClient
+        from .services import portfolio_builder as portfolio_module
+        from .services import optimizer as optimizer_module
+        from .services import cv_generator as cv_module
+        from .services import cover_letter_generator as cl_module
+        from .services.groq_client import GroqClient
         
         # Store the modules
         modules.update({
@@ -787,8 +788,8 @@ async def generate_portfolio_from_resume(
         
         try:
             # Initialize PortfolioBuilder with Groq client
-            from backend.services.groq_client import groq_client
-            from backend.services.portfolio_builder import PortfolioBuilder
+            from .services.groq_client import groq_client
+            from .services.portfolio_builder import PortfolioBuilder
             
             portfolio_builder = PortfolioBuilder(groq_client)
             

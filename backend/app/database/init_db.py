@@ -1,8 +1,8 @@
 """Initialize the database with test data."""
 import os
 from sqlalchemy.orm import Session
-from backend.db import models, crud
-from backend.db.config import SessionLocal, init_db
+from . import models, crud
+from .config import SessionLocal, init_db
 
 def create_test_user():
     """Create a test user if it doesn't exist."""

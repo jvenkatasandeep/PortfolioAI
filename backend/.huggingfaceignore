@@ -1,0 +1,61 @@
+# Ignore everything by default
+*
+
+# Allow these files and directories
+!.dockerignore
+!.env.example
+!Dockerfile
+!main.py
+!requirements.txt
+!setup.py
+
+# Allow the app directory
+!app/
+!app/**/*
+
+# Explicitly exclude test directories and files
+app/**/tests/
+app/**/tests/**/*
+app/**/*_test.py
+app/**/test_*.py
+
+# Exclude any remaining duplicate files
+**/* 2.*
+**/README 2.md
+**/pyproject 2.toml
+**/requirements 2.txt
+**/run 2.py
+**/setup 2.py
+**/__init__ 2.py
+
+# Exclude development and IDE files
+**/.git/
+**/.gitignore
+**/.gitattributes
+**/.vscode/
+**/.idea/
+**/*.swp
+**/*.swo
+**/*~
+**/Thumbs.db
+**/.DS_Store
+
+# Exclude Python cache and build files
+**/__pycache__/
+**/*.py[cod]
+**/*.so
+**/.Python
+**/build/
+**/dist/
+**/*.egg-info/
+**/*.egg
+**/venv/
+**/env/
+**/.venv/
+**/.env
+
+# Exclude logs and databases
+**/*.log
+**/*.sql
+**/*.sqlite
+**/*.db

@@ -1,83 +1,71 @@
 # PortfolioAI Backend
 
-Backend service for the PortfolioAI application, built with FastAPI.
+FastAPI backend for the PortfolioAI application, providing AI-powered portfolio generation and management services.
 
-## Project Structure
+## 🚀 Features
 
-```
-backend/
-├── app/                    # Application package
-│   ├── api/                # API routes
-│   ├── core/               # Core functionality
-│   ├── database/           # Database models and operations
-│   ├── models/             # Pydantic models
-│   ├── services/           # Business logic
-│   └── utils/              # Utility functions
-├── tests/                  # Test files
-├── instance/               # Instance-specific files (e.g., local database)
-├── migrations/             # Database migrations
-├── .env                    # Environment variables
-├── pyproject.toml          # Project metadata and dependencies
-├── requirements.txt        # Project dependencies
-└── run.py                 # Application entry point
-```
+- **RESTful API**: Built with FastAPI for high performance
+- **AI Integration**: Connect with AI models for content generation
+- **Database**: MongoDB for data persistence
+- **Authentication**: JWT-based user authentication
+- **CORS**: Configured for frontend communication
 
-## Setup
+## 🛠️ Setup
 
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd portfolioai/backend
+   cd PortfolioAI/backend
    ```
 
 2. **Create a virtual environment**
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    ```
 
 3. **Install dependencies**
    ```bash
-   pip install -e .  # For development
-   # or
    pip install -r requirements.txt
    ```
 
-4. **Set up environment variables**
-   Create a `.env` file in the backend directory with the required variables:
+4. **Environment Variables**
+   Create a `.env` file in the backend directory with:
    ```
-   DATABASE_URL=sqlite:///./portfolioai.db
-   SECRET_KEY=your-secret-key
-   ALGORITHM=HS256
+   MONGODB_URL=your_mongodb_connection_string
+   JWT_SECRET_KEY=your_jwt_secret_key
+   JWT_ALGORITHM=HS256
    ACCESS_TOKEN_EXPIRE_MINUTES=30
    ```
 
-## Running the Application
+5. **Run the application**
+   ```bash
+   uvicorn app.main:app --reload
+   ```
 
-```bash
-# Run the development server
-python run.py
+   The API will be available at `http://localhost:8000`
 
-# Or using uvicorn directly
-uvicorn app.main:app --reload --reload-dir=app
-```
+## 📚 API Documentation
 
-The API will be available at `http://localhost:8000`
-
-## API Documentation
-
+Once the server is running, access the interactive API documentation at:
 - Swagger UI: `http://localhost:8000/docs`
 - ReDoc: `http://localhost:8000/redoc`
 
-## Running Tests
+## 🧪 Testing
 
+To run tests:
 ```bash
-pytest tests/
+pytest
 ```
 
-## Deployment
+## 🐳 Docker
 
-For production deployment, consider using:
-- Gunicorn with Uvicorn workers
-- Docker containers
-- Cloud platforms like AWS, GCP, or Azure
+Build and run with Docker:
+```bash
+docker build -t portfolioai-backend .
+docker run -p 8000:8000 portfolioai-backend
+```
+
+## 📝 License
+
+MIT License - see the [LICENSE](LICENSE) file for details.

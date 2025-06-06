@@ -4,7 +4,7 @@ Resume Optimization Service for PortfolioAI
 import logging
 from typing import Dict, Any, Tuple, List
 
-from backend.services.groq_client import GroqClient
+from .groq_client import GroqClient
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

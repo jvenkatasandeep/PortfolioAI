@@ -14,8 +14,8 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 
-from backend.utils.file_utils import get_temp_file
-from backend.services.groq_client import GroqClient
+from ..utils.file_utils import get_temp_file
+from .groq_client import GroqClient
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

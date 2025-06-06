@@ -1,7 +1,7 @@
 """CRUD operations for PortfolioAI."""
 from typing import List, Optional, Type, TypeVar, Generic, Any
 from sqlalchemy.orm import Session
-from backend.db import models
+from ..db import models
 
 ModelType = TypeVar("ModelType", bound=models.Base)
 

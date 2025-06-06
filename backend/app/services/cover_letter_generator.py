@@ -11,8 +11,8 @@ import uuid
 from fastapi import UploadFile, HTTPException
 from pydantic import BaseModel
 
-from backend.services.groq_client import GroqClient
-from backend.utils.file_utils import get_temp_file, save_upload_file
+from .groq_client import GroqClient
+from ..utils.file_utils import get_temp_file, save_upload_file
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

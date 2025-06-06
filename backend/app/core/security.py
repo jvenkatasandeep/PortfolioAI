@@ -7,9 +7,9 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 
-from backend.db.deps import get_db_session
-from backend.db import models
-from backend.config import settings
+from ..db.deps import get_db_session
+from ..db import models
+from ..config import settings
 
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")

@@ -12,8 +12,8 @@ from pathlib import Path
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 
-from backend.utils.file_utils import get_temp_file, cleanup_file, is_file_supported
-from backend.services.groq_client import GroqClient
+from ..utils.file_utils import get_temp_file, cleanup_file, is_file_supported
+from .groq_client import GroqClient
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

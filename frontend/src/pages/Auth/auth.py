@@ -8,12 +8,6 @@ from datetime import datetime
 # Load environment variables
 load_dotenv()
 
-# Debug: Print all environment variables
-print("Current working directory:", os.getcwd())
-print("Environment variables:", os.environ)
-print("SUPABASE_URL exists:", "SUPABASE_URL" in os.environ)
-print("SUPABASE_KEY exists:", "SUPABASE_KEY" in os.environ)
-
 # Initialize Supabase client with auto-refresh token
 def init_supabase() -> Client:
     try:

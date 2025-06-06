@@ -3,9 +3,11 @@ import os
 import time
 import json
 import base64
-from components.header import show_header
+import sys
 import tempfile
 from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent / "src"))
+from components.header import show_header
 from datetime import datetime
 from typing import Dict, Any, Optional, List, Union, Tuple
 from urllib.parse import parse_qs, urlparse
